@@ -8,11 +8,13 @@ import { MdOutlineRestaurantMenu } from "react-icons/md"
 import images from "../../constants/images";
 import ReactCardFlip from 'react-card-flip';
 import { Link } from 'react-router-dom';
+import MegaMenu from '../MegaMenu/MegaMenu';
 
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [showMegaMenu, setShowMegaMenu] = useState(false);
 
   const flipTimes = {
     home: 5000,
@@ -32,6 +34,10 @@ const Navbar = () => {
     const intervalId = setInterval(flipIcon, 5000);
     return () => clearInterval(intervalId);
   }, [isFlipped]);
+
+  const toggleMegaMenu = () => {
+    setShowMegaMenu(!showMegaMenu);
+  };
 
   return (
     <nav className="app__navbar">
@@ -81,14 +87,21 @@ const Navbar = () => {
           <h1>Contact</h1></div>
         </ReactCardFlip>
         <Link to='/shef'>
-        <ReactCardFlip flipDirection='vertical' isFlipped={isFlipped} flipSpeedBackToFront={4} flipSpeedFrontToBack={5}>
-        <div className='front'>
-        <li className="p__opensans"><a href="#contact"><FontAwesomeIcon icon={faKitchenSet} style={{ fontSize: '2em' }} /></a></li>
-        </div>
-        <div className='front Back'>
-        <h1>Shef</h1></div>
-        </ReactCardFlip>
-        </Link>
+  <div 
+    onMouseEnter={toggleMegaMenu} 
+    onMouseLeave={toggleMegaMenu}
+  >
+    <ReactCardFlip flipDirection='vertical' isFlipped={isFlipped} flipSpeedBackToFront={4} flipSpeedFrontToBack={5}>
+      <div className='front'>
+        <li className="p__opensans"><FontAwesomeIcon icon={faKitchenSet} style={{ fontSize: '2em' }} /></li>
+      </div>
+      <div className='front Back'>
+        <h1>Shef</h1>
+      </div>
+    </ReactCardFlip>
+  </div>
+</Link>
+{showMegaMenu && <MegaMenu />}
       </ul>
 
       <div className="app__navbar-smallscreen">

@@ -1,0 +1,25 @@
+.mega-menu {
+    position: absolute;
+    top: 100%; /* Position below the Shef icon */
+    left: 0;
+    background-color: #fff; /* Background color for the mega-menu */
+    padding: 10px;
+    border: 1px solid #ccc;
+    z-index: 100; /* Ensure the mega-menu appears above other elements */
+  }
+  
+  .mega-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mega-menu li {
+    margin-bottom: 5px;
+  }
+  
+  .mega-menu a {
+    text-decoration: none;
+    color: #333;
+  }
+  
